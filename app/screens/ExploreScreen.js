@@ -5,7 +5,7 @@ import { View, Text } from "react-native";
 const ExploreScreen = () => {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Detail Screen</Text>
+      <Text>Explore Screen</Text>
     </View>
   );
 };
