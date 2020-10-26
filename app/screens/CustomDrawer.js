@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import { View, StyleSheet } from "react-native";
 import {
+  useTheme,
   Avatar,
   Title,
   Caption,
@@ -11,15 +12,15 @@ import {
   TouchableRipple,
   Switch,
 } from "react-native-paper";
+import { AuthContext } from "../components/context";
 
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 const CustomDrawer = (props) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const paperTheme = useTheme();
 
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-  };
+  const { signOut, toggleTheme } = useContext(AuthContext);
 
   return (
     <View style={{ flex: 1 }}>
@@ -106,7 +107,7 @@ const CustomDrawer = (props) => {
               <View style={styles.preference}>
                 <Text>Dark Mode</Text>
                 <View pointerEvents="none">
-                  <Switch value={isDarkMode} />
+                  <Switch value={paperTheme.dark} />
                 </View>
               </View>
             </TouchableRipple>
@@ -118,7 +119,7 @@ const CustomDrawer = (props) => {
               <Icon name="exit-to-app" color={color} size={size} />
             )}
             label="Sign Out"
-            onPress={() => console("hello world")}
+            onPress={() => signOut()}
           ></DrawerItem>
         </Drawer.Section>
       </DrawerContentScrollView>
