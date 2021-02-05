@@ -1,3 +1,4 @@
+// this file is not use yet for background image
 import React from "react";
 
 import {
